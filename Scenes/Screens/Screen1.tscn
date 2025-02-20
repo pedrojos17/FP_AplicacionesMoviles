@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cctp4nsx4rjfa"]
+[gd_scene load_steps=17 format=3 uid="uid://cctp4nsx4rjfa"]
 
 [ext_resource type="PackedScene" uid="uid://dwn0tylnmobjg" path="res://Scenes/Escenarios/escena1.tscn" id="1_5811h"]
 [ext_resource type="PackedScene" uid="uid://dlv60rotemese" path="res://Scenes/Characters/ninjaFrog.tscn" id="2_wt1wv"]
@@ -9,6 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://6j1us6wd3ns" path="res://Scenes/Enemys/spike_ball.tscn" id="7_fi620"]
 [ext_resource type="PackedScene" uid="uid://bex7uekedjyme" path="res://Scenes/Escenarios/fruit.tscn" id="8_q41c8"]
 [ext_resource type="PackedScene" uid="uid://b0kydvqlikug" path="res://Scenes/Screens/player_info.tscn" id="9_lptmo"]
+[ext_resource type="PackedScene" uid="uid://cmbk2v2tfg3w0" path="res://Scenes/Escenarios/portal.tscn" id="10_xusgr"]
+[ext_resource type="AudioStream" uid="uid://d4etpphdi7ggk" path="res://Assets/sonidos/pixel-song-19-31953_junta.mp3" id="11_uothi"]
+[ext_resource type="Script" path="res://Scenes/Screens/audio_fondo.gd" id="12_iict7"]
 
 [sub_resource type="Curve2D" id="Curve2D_wuvam"]
 _data = {
@@ -60,7 +63,7 @@ _data = {
 [node name="TileMap" parent="." instance=ExtResource("1_5811h")]
 
 [node name="ninjaFrog" parent="." instance=ExtResource("2_wt1wv")]
-position = Vector2(1613, 357)
+position = Vector2(2502, 374)
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("3_bkadt")]
 
@@ -100,7 +103,7 @@ position = Vector2(1969, 289)
 position = Vector2(2192, 276)
 
 [node name="SpikeBall4" parent="." instance=ExtResource("7_fi620")]
-position = Vector2(2324, 352)
+position = Vector2(2384, 285)
 
 [node name="fruit" parent="." instance=ExtResource("8_q41c8")]
 position = Vector2(1521, 304)
@@ -113,3 +116,16 @@ position = Vector2(1562, 298)
 position = Vector2(1536, 269)
 
 [node name="CanvasLayer" parent="." instance=ExtResource("9_lptmo")]
+
+[node name="Node2D" parent="." instance=ExtResource("10_xusgr")]
+position = Vector2(2760, 393)
+
+[node name="Node2D2" parent="." instance=ExtResource("10_xusgr")]
+position = Vector2(2677, 219)
+
+[node name="audio_fondo" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_uothi")
+autoplay = true
+script = ExtResource("12_iict7")
+
+[connection signal="finished" from="audio_fondo" to="audio_fondo" method="_on_finished"]

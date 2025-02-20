@@ -20,6 +20,7 @@ value = 100.0
 show_percentage = false
 
 [node name="health_ProgressBar" type="Label" parent="healt_ProgressBar"]
+layout_mode = 0
 offset_left = 52.0
 offset_top = -5.0
 offset_right = 152.0
