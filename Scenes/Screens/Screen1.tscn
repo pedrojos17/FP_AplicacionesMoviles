@@ -1,0 +1,115 @@
+[gd_scene load_steps=14 format=3 uid="uid://cctp4nsx4rjfa"]
+
+[ext_resource type="PackedScene" uid="uid://dwn0tylnmobjg" path="res://Scenes/Escenarios/escena1.tscn" id="1_5811h"]
+[ext_resource type="PackedScene" uid="uid://dlv60rotemese" path="res://Scenes/Characters/ninjaFrog.tscn" id="2_wt1wv"]
+[ext_resource type="PackedScene" uid="uid://x3du1wve4m5s" path="res://Scenes/background/backgroundMontañas.tscn" id="3_bkadt"]
+[ext_resource type="PackedScene" uid="uid://ci5nlctsr8rjf" path="res://Scenes/Escenarios/moving_platform1.tscn" id="4_hpyfi"]
+[ext_resource type="PackedScene" uid="uid://oilmqqbafoep" path="res://Scenes/Enemys/sierra.tscn" id="5_26mpo"]
+[ext_resource type="PackedScene" uid="uid://b1vbeouunqpwi" path="res://Scenes/Escenarios/trampoline.tscn" id="6_megd5"]
+[ext_resource type="PackedScene" uid="uid://6j1us6wd3ns" path="res://Scenes/Enemys/spike_ball.tscn" id="7_fi620"]
+[ext_resource type="PackedScene" uid="uid://bex7uekedjyme" path="res://Scenes/Escenarios/fruit.tscn" id="8_q41c8"]
+[ext_resource type="PackedScene" uid="uid://b0kydvqlikug" path="res://Scenes/Screens/player_info.tscn" id="9_lptmo"]
+
+[sub_resource type="Curve2D" id="Curve2D_wuvam"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 742, 64, 0, 0, 0, 0, 750, 296)
+}
+point_count = 2
+
+[sub_resource type="Animation" id="Animation_so3hj"]
+length = 14.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3.66667, 8.96667, 13.9333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.3115, 0.707, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_y5ral"]
+resource_name = "regular_move"
+length = 5.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.33333, 4.96667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.475, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l24h1"]
+_data = {
+"RESET": SubResource("Animation_so3hj"),
+"regular_move": SubResource("Animation_y5ral")
+}
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TileMap" parent="." instance=ExtResource("1_5811h")]
+
+[node name="ninjaFrog" parent="." instance=ExtResource("2_wt1wv")]
+position = Vector2(1613, 357)
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("3_bkadt")]
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_wuvam")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(742, 64)
+rotation = 1.56086
+rotates = false
+loop = false
+
+[node name="AnimatableBody2D" parent="Path2D/PathFollow2D" instance=ExtResource("4_hpyfi")]
+position = Vector2(0.980103, 2.00984)
+rotation = -1.56086
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Path2D/PathFollow2D"]
+libraries = {
+"": SubResource("AnimationLibrary_l24h1")
+}
+autoplay = "RESET"
+speed_scale = -1.5
+
+[node name="sierra" parent="." instance=ExtResource("5_26mpo")]
+position = Vector2(702, 415)
+
+[node name="tampoline" parent="." instance=ExtResource("6_megd5")]
+position = Vector2(1234, 392)
+
+[node name="SpikeBall" parent="." instance=ExtResource("7_fi620")]
+position = Vector2(1740, 289)
+
+[node name="SpikeBall2" parent="." instance=ExtResource("7_fi620")]
+position = Vector2(1969, 289)
+
+[node name="SpikeBall3" parent="." instance=ExtResource("7_fi620")]
+position = Vector2(2192, 276)
+
+[node name="SpikeBall4" parent="." instance=ExtResource("7_fi620")]
+position = Vector2(2324, 352)
+
+[node name="fruit" parent="." instance=ExtResource("8_q41c8")]
+position = Vector2(1521, 304)
+fruitType = "banana"
+
+[node name="fruit2" parent="." instance=ExtResource("8_q41c8")]
+position = Vector2(1562, 298)
+
+[node name="fruit3" parent="." instance=ExtResource("8_q41c8")]
+position = Vector2(1536, 269)
+
+[node name="CanvasLayer" parent="." instance=ExtResource("9_lptmo")]

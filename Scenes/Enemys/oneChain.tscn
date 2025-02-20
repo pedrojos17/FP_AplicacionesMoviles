@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b4hdnxv2dwwmd"]
+
+[ext_resource type="Texture2D" uid="uid://dbrrp73f78oj1" path="res://Assets/Traps/Spiked Ball/Chain.png" id="1_twaoy"]
+
+[node name="Chain" type="Sprite2D"]
+texture = ExtResource("1_twaoy")
