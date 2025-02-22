@@ -13,6 +13,9 @@ var count_jumps: int = 0
 var double_jump: bool = false
 var ray_cast_dimension = 12  # Mejor float para evitar más errores luego
 var stuck_on_wall :bool = false
+var gotShuriken =false
+
+@export var shuriken:PackedScene
 
 func _ready():
 	$animaciones.play("appear")
@@ -34,6 +37,9 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_accept") and right_to_jump():
 		if count_jumps == 1:
 			double_jump = true
+			$audioDobleJump.play()
+		else:
+			$audiojump.play()
 		velocity.y = JUMP_VELOCITY
 		count_jumps+=1
 
@@ -96,6 +102,20 @@ func decide_animation():
 			elif velocity.y < 0:
 				$animaciones.play("jump_up")
 
+func _input(event):
+	if event.is_action_pressed("shuriken"): #tecla f
+		if gotShuriken: return
+		gotShuriken = true
+		allow_animation=false
+		$animaciones.play("shuriken_launch")
+		var newShuriken = shuriken.instantiate()
+		newShuriken.position = self.position
+		newShuriken.isFlip = $animaciones.flip_h
+		newShuriken.connect("shuriken_destroyed", _on_shuri_destroyed)
+		add_sibling(newShuriken)
+
+func _on_shuri_destroyed():
+	gotShuriken=false
 
 func right_to_jump():
 	if had_jump:
@@ -119,11 +139,27 @@ func _on_salto_timer_timeout() -> void:
 
 
 func _on_damage_detection_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
-	health-=10
-	
+	health-=30
+	$audioDamage.play()
+	allow_animation=false
+	$animaciones.play("hit")
+	velocity.y = -300
+	muerte()
 
 func collectFruit(fruitType):
 	var auxString = fruitType + "Points"
 	var gaindePoints = GeneralRules[auxString]
 	fruit_count += gaindePoints
-	print(fruit_count)
+	$audiojump.play()
+
+func muerte():
+	if health <= 0:
+		get_tree().paused = true  # Pausar el juego cuando el personaje muera
+		$animaciones.play("hit")  # Si tienes una animación de muerte
+		
+		# Buscar la CanvasLayer de información y hacerla visible
+		var canvas_layer = get_parent().get_node("dieInfo")  # Asegúrate del nombre correcto
+		if canvas_layer:
+			canvas_layer.visible = true
+		else:
+			print("ERROR: No se encontró la CanvasLayer de información")

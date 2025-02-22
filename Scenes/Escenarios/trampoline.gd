@@ -14,4 +14,5 @@ func _process(delta: float) -> void:
 func _on_activation_area_body_entered(body):
 	$Animaciones_trampolin.play("launch")
 	body.velocity.y= -800
+	$audio_trampolin.play()
 	

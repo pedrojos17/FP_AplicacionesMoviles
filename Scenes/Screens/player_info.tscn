@@ -1,23 +1,27 @@
-[gd_scene load_steps=2 format=3 uid="uid://b0kydvqlikug"]
+[gd_scene load_steps=3 format=3 uid="uid://dn1oeh53bl2v7"]
 
 [ext_resource type="Script" path="res://Scenes/Screens/player_info.gd" id="1_4omuj"]
+[ext_resource type="Texture2D" uid="uid://blikk8mc5siib" path="res://Assets/Menu/Buttons/Settings.png" id="2_ancyo"]
 
 [node name="PlayerInfo" type="CanvasLayer"]
+process_mode = 3
 script = ExtResource("1_4omuj")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 1152.0
-offset_bottom = 40.0
+offset_bottom = 44.0
+metadata/_edit_use_anchors_ = true
 
 [node name="healt_ProgressBar" type="ProgressBar" parent="."]
 modulate = Color(0.188235, 1, 0.254902, 1)
-offset_left = 46.0
-offset_top = 6.0
-offset_right = 261.0
-offset_bottom = 33.0
+offset_left = 47.0
+offset_top = 7.0
+offset_right = 262.0
+offset_bottom = 34.0
 step = 1.0
 value = 100.0
 show_percentage = false
+metadata/_edit_use_anchors_ = true
 
 [node name="health_ProgressBar" type="Label" parent="healt_ProgressBar"]
 layout_mode = 0
@@ -30,11 +34,107 @@ text = "health
 "
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="FruitPointsLabel" type="Label" parent="."]
 offset_left = 301.0
-offset_top = 9.0
+offset_top = 10.0
 offset_right = 431.0
-offset_bottom = 32.0
+offset_bottom = 33.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "FruitPoints:"
+metadata/_edit_use_anchors_ = true
+
+[node name="button_menu" type="Button" parent="."]
+offset_left = 1089.0
+offset_top = 7.0
+offset_right = 1118.0
+offset_bottom = 37.0
+icon = ExtResource("2_ancyo")
+metadata/_edit_use_anchors_ = true
+
+[node name="MenuPopUp" type="Node2D" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="MenuPopUp"]
+offset_left = 315.0
+offset_top = 136.0
+offset_right = 809.0
+offset_bottom = 573.0
+color = Color(1, 1, 1, 0.768627)
+
+[node name="Label" type="Label" parent="MenuPopUp"]
+offset_left = 380.0
+offset_top = 148.0
+offset_right = 724.0
+offset_bottom = 208.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "GAME PAUSED"
+
+[node name="MenuButton" type="MenuButton" parent="MenuPopUp"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -8.0
+offset_right = 4.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="resume" type="Button" parent="MenuPopUp/MenuButton"]
+layout_mode = 0
+offset_left = 410.0
+offset_top = 331.0
+offset_right = 710.0
+offset_bottom = 381.0
+text = "RESUME"
+
+[node name="restart" type="Button" parent="MenuPopUp/MenuButton"]
+layout_mode = 0
+offset_left = 410.0
+offset_top = 258.0
+offset_right = 710.0
+offset_bottom = 308.0
+text = "RESTART"
+
+[node name="SoundsLabel" type="Label" parent="MenuPopUp"]
+offset_left = 422.0
+offset_top = 471.0
+offset_right = 704.0
+offset_bottom = 494.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Sounds"
+horizontal_alignment = 1
+
+[node name="MusicLabel" type="Label" parent="MenuPopUp"]
+offset_left = 416.0
+offset_top = 399.0
+offset_right = 700.0
+offset_bottom = 422.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Music
+"
+horizontal_alignment = 1
+
+[node name="MusicSlider" type="HSlider" parent="MenuPopUp"]
+offset_left = 505.0
+offset_top = 436.0
+offset_right = 631.0
+offset_bottom = 452.0
+min_value = 50.0
+value = 50.0
+
+[node name="SoundSlider" type="HSlider" parent="MenuPopUp"]
+offset_left = 501.0
+offset_top = 511.0
+offset_right = 633.0
+offset_bottom = 542.0
+
+[connection signal="pressed" from="button_menu" to="." method="_on_button_menu_pressed"]
+[connection signal="pressed" from="MenuPopUp/MenuButton/resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="MenuPopUp/MenuButton/restart" to="." method="_on_restart_pressed"]
+[connection signal="value_changed" from="MenuPopUp/MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="MenuPopUp/SoundSlider" to="." method="_on_sound_slider_value_changed"]

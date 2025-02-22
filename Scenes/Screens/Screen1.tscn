@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cctp4nsx4rjfa"]
+[gd_scene load_steps=18 format=3 uid="uid://cctp4nsx4rjfa"]
 
 [ext_resource type="PackedScene" uid="uid://dwn0tylnmobjg" path="res://Scenes/Escenarios/escena1.tscn" id="1_5811h"]
 [ext_resource type="PackedScene" uid="uid://dlv60rotemese" path="res://Scenes/Characters/ninjaFrog.tscn" id="2_wt1wv"]
@@ -8,10 +8,11 @@
 [ext_resource type="PackedScene" uid="uid://b1vbeouunqpwi" path="res://Scenes/Escenarios/trampoline.tscn" id="6_megd5"]
 [ext_resource type="PackedScene" uid="uid://6j1us6wd3ns" path="res://Scenes/Enemys/spike_ball.tscn" id="7_fi620"]
 [ext_resource type="PackedScene" uid="uid://bex7uekedjyme" path="res://Scenes/Escenarios/fruit.tscn" id="8_q41c8"]
-[ext_resource type="PackedScene" uid="uid://b0kydvqlikug" path="res://Scenes/Screens/player_info.tscn" id="9_lptmo"]
 [ext_resource type="PackedScene" uid="uid://cmbk2v2tfg3w0" path="res://Scenes/Escenarios/portal.tscn" id="10_xusgr"]
 [ext_resource type="AudioStream" uid="uid://d4etpphdi7ggk" path="res://Assets/sonidos/pixel-song-19-31953_junta.mp3" id="11_uothi"]
 [ext_resource type="Script" path="res://Scenes/Screens/audio_fondo.gd" id="12_iict7"]
+[ext_resource type="PackedScene" uid="uid://dn1oeh53bl2v7" path="res://Scenes/Screens/player_info.tscn" id="12_y1ni4"]
+[ext_resource type="PackedScene" uid="uid://cq3cnrvsmcvso" path="res://Scenes/Screens/die_info.tscn" id="13_5vyc3"]
 
 [sub_resource type="Curve2D" id="Curve2D_wuvam"]
 _data = {
@@ -63,7 +64,7 @@ _data = {
 [node name="TileMap" parent="." instance=ExtResource("1_5811h")]
 
 [node name="ninjaFrog" parent="." instance=ExtResource("2_wt1wv")]
-position = Vector2(2502, 374)
+position = Vector2(1578, 383)
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("3_bkadt")]
 
@@ -115,8 +116,6 @@ position = Vector2(1562, 298)
 [node name="fruit3" parent="." instance=ExtResource("8_q41c8")]
 position = Vector2(1536, 269)
 
-[node name="CanvasLayer" parent="." instance=ExtResource("9_lptmo")]
-
 [node name="Node2D" parent="." instance=ExtResource("10_xusgr")]
 position = Vector2(2760, 393)
 
@@ -124,8 +123,15 @@ position = Vector2(2760, 393)
 position = Vector2(2677, 219)
 
 [node name="audio_fondo" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("11_uothi")
+volume_db = -19.217
 autoplay = true
+bus = &"MusicBus"
 script = ExtResource("12_iict7")
+
+[node name="PlayerInfo" parent="." instance=ExtResource("12_y1ni4")]
+
+[node name="dieInfo" parent="." instance=ExtResource("13_5vyc3")]
 
 [connection signal="finished" from="audio_fondo" to="audio_fondo" method="_on_finished"]

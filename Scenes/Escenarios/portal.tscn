@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://cmbk2v2tfg3w0"]
+[gd_scene load_steps=12 format=3 uid="uid://cmbk2v2tfg3w0"]
 
 [ext_resource type="Texture2D" uid="uid://bmrtk54eqlenj" path="res://Assets/Other/Dimensional_Portal.png" id="1_3gg2g"]
 [ext_resource type="Script" path="res://Scenes/Escenarios/portal.gd" id="1_18y0w"]
+[ext_resource type="AudioStream" uid="uid://prdwnbhd052k" path="res://Assets/sonidos/ufo-takeoff-by-prettysleepy-art-13255.mp3" id="3_dd0d2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a3d3o"]
 atlas = ExtResource("1_3gg2g")
@@ -54,7 +55,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ighqc"]
-size = Vector2(1.25, 22.25)
+size = Vector2(2.25, 64.25)
 
 [node name="portal" type="Node2D" groups=["portal"]]
 scale = Vector2(2, 2)
@@ -69,10 +70,12 @@ frame_progress = 0.34216
 
 [node name="area_teletransport" type="Area2D" parent="."]
 position = Vector2(-2.38419e-07, 0)
-scale = Vector2(1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="area_teletransport"]
-position = Vector2(0.125, 3.625)
+position = Vector2(-0.375, -17.375)
 shape = SubResource("RectangleShape2D_ighqc")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_dd0d2")
 
 [connection signal="area_entered" from="area_teletransport" to="." method="_on_area_teletransport_area_entered"]

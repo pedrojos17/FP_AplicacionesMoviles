@@ -1,0 +1,44 @@
+[gd_scene load_steps=2 format=3 uid="uid://cq3cnrvsmcvso"]
+
+[ext_resource type="Script" path="res://Scenes/Screens/die_info.gd" id="1_ww4gi"]
+
+[node name="dieInfo" type="CanvasLayer"]
+script = ExtResource("1_ww4gi")
+
+[node name="MenuPopUp" type="Node2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="MenuPopUp"]
+offset_left = 315.0
+offset_top = 136.0
+offset_right = 809.0
+offset_bottom = 436.0
+rotation = 0.000155003
+color = Color(1, 1, 1, 0.768627)
+
+[node name="Label" type="Label" parent="MenuPopUp"]
+offset_left = 380.0
+offset_top = 148.0
+offset_right = 724.0
+offset_bottom = 208.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "NINJAFROG DIE"
+
+[node name="exit" type="Button" parent="MenuPopUp"]
+offset_left = 410.0
+offset_top = 350.0
+offset_right = 710.0
+offset_bottom = 400.0
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+text = "EXIT"
+
+[node name="restart" type="Button" parent="MenuPopUp"]
+offset_left = 410.0
+offset_top = 250.0
+offset_right = 710.0
+offset_bottom = 300.0
+rotation = 0.00482717
+text = "RESTART"
+
+[connection signal="pressed" from="MenuPopUp/exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="MenuPopUp/restart" to="." method="_on_restart_pressed"]

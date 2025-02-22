@@ -24,3 +24,13 @@ func _physics_process(delta: float) -> void:
 	velocity.x = direction * SPEED
 
 	move_and_slide()
+
+
+func _on_damage_zone_area_entered(area):
+	if area.is_in_group("shuriken"):
+		$animaciones_saw.play("die")
+		
+
+
+func _on_animaciones_saw_animation_finished() -> void:
+	self.queue_free()
