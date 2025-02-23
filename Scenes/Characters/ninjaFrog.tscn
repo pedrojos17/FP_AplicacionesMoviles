@@ -535,6 +535,8 @@ bus = &"SoundBus"
 stream = ExtResource("13_ugb23")
 bus = &"SoundBus"
 
+[node name="safe_timer" type="Timer" parent="."]
+
 [connection signal="animation_finished" from="animaciones" to="." method="_on_animaciones_animation_finished"]
 [connection signal="timeout" from="salto_timer" to="." method="_on_salto_timer_timeout"]
 [connection signal="area_shape_entered" from="damage_detection" to="." method="_on_damage_detection_area_shape_entered"]

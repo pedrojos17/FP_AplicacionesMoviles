@@ -1,5 +1,6 @@
-[gd_scene load_steps=18 format=3 uid="uid://cctp4nsx4rjfa"]
+[gd_scene load_steps=21 format=3 uid="uid://cctp4nsx4rjfa"]
 
+[ext_resource type="Script" path="res://Scenes/Screens/screen_1.gd" id="1_2smq6"]
 [ext_resource type="PackedScene" uid="uid://dwn0tylnmobjg" path="res://Scenes/Escenarios/escena1.tscn" id="1_5811h"]
 [ext_resource type="PackedScene" uid="uid://dlv60rotemese" path="res://Scenes/Characters/ninjaFrog.tscn" id="2_wt1wv"]
 [ext_resource type="PackedScene" uid="uid://x3du1wve4m5s" path="res://Scenes/background/backgroundMontañas.tscn" id="3_bkadt"]
@@ -13,6 +14,7 @@
 [ext_resource type="Script" path="res://Scenes/Screens/audio_fondo.gd" id="12_iict7"]
 [ext_resource type="PackedScene" uid="uid://dn1oeh53bl2v7" path="res://Scenes/Screens/player_info.tscn" id="12_y1ni4"]
 [ext_resource type="PackedScene" uid="uid://cq3cnrvsmcvso" path="res://Scenes/Screens/die_info.tscn" id="13_5vyc3"]
+[ext_resource type="PackedScene" uid="uid://cewi12rhfbsmg" path="res://Scenes/Screens/controls.tscn" id="15_32vvc"]
 
 [sub_resource type="Curve2D" id="Curve2D_wuvam"]
 _data = {
@@ -59,12 +61,16 @@ _data = {
 "regular_move": SubResource("Animation_y5ral")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cq1di"]
+size = Vector2(4454.85, 44.7755)
+
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_2smq6")
 
 [node name="TileMap" parent="." instance=ExtResource("1_5811h")]
 
 [node name="ninjaFrog" parent="." instance=ExtResource("2_wt1wv")]
-position = Vector2(1578, 383)
+position = Vector2(3, 383)
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("3_bkadt")]
 
@@ -133,5 +139,17 @@ script = ExtResource("12_iict7")
 [node name="PlayerInfo" parent="." instance=ExtResource("12_y1ni4")]
 
 [node name="dieInfo" parent="." instance=ExtResource("13_5vyc3")]
+
+[node name="colisionSuelo" type="Area2D" parent="."]
+position = Vector2(0, 600)
+rotation = -0.00527237
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="colisionSuelo"]
+position = Vector2(1951.48, -2.4126)
+rotation = -3.1354
+shape = SubResource("RectangleShape2D_cq1di")
+
+[node name="Controls" parent="." instance=ExtResource("15_32vvc")]
 
 [connection signal="finished" from="audio_fondo" to="audio_fondo" method="_on_finished"]

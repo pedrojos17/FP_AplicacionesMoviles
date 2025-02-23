@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://cewi12rhfbsmg"]
+
+[ext_resource type="Script" path="res://Scenes/Screens/controls.gd" id="1_3gsvo"]
+[ext_resource type="Texture2D" uid="uid://bjnb5e5bj14oo" path="res://Assets/Menu/Buttons/flatDark23.png" id="1_23fgv"]
+[ext_resource type="Texture2D" uid="uid://bdts5ks65onai" path="res://Assets/Menu/Buttons/flatDark24.png" id="2_6tmp4"]
+[ext_resource type="Texture2D" uid="uid://covf11baql6sj" path="res://Assets/Menu/Buttons/flatDark25.png" id="3_tyka7"]
+[ext_resource type="Texture2D" uid="uid://cj8ib62o7o1u6" path="res://Assets/Menu/Buttons/flatDark47.png" id="4_vgksy"]
+
+[node name="Controls" type="CanvasLayer"]
+script = ExtResource("1_3gsvo")
+
+[node name="left" type="TouchScreenButton" parent="."]
+position = Vector2(37, 507)
+scale = Vector2(1.375, 1.2625)
+texture_normal = ExtResource("1_23fgv")
+action = "ui_left"
+
+[node name="right" type="TouchScreenButton" parent="."]
+position = Vector2(181, 510)
+scale = Vector2(1.4, 1.2375)
+texture_normal = ExtResource("2_6tmp4")
+action = "ui_right"
+
+[node name="up" type="TouchScreenButton" parent="."]
+position = Vector2(877, 500)
+scale = Vector2(1.2375, 1.1625)
+texture_normal = ExtResource("3_tyka7")
+action = "ui_accept"
+
+[node name="attack" type="TouchScreenButton" parent="."]
+position = Vector2(986, 408)
+scale = Vector2(1.3125, 1.2375)
+texture_normal = ExtResource("4_vgksy")
+action = "shuriken"
+
+[connection signal="pressed" from="left" to="." method="_on_left_pressed"]
+[connection signal="pressed" from="right" to="." method="_on_right_pressed"]
+[connection signal="pressed" from="up" to="." method="_on_up_pressed"]
+[connection signal="pressed" from="attack" to="." method="_on_attack_pressed"]

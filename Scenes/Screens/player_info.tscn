@@ -54,7 +54,6 @@ icon = ExtResource("2_ancyo")
 metadata/_edit_use_anchors_ = true
 
 [node name="MenuPopUp" type="Node2D" parent="."]
-visible = false
 
 [node name="ColorRect" type="ColorRect" parent="MenuPopUp"]
 offset_left = 315.0

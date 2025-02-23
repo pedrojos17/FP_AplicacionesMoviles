@@ -16,3 +16,4 @@ func _process(delta):
 func _on_area_teletransport_area_entered(area):
 	if area.get_parent().is_in_group("ninja"):
 		area.get_parent().position = send_ninja_to
+		$audioPortal.play()
