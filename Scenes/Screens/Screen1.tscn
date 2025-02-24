@@ -18,7 +18,7 @@
 
 [sub_resource type="Curve2D" id="Curve2D_wuvam"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 742, 64, 0, 0, 0, 0, 750, 296)
+"points": PackedVector2Array(0, 0, 0, 0, 700, 9.25708, 0, 0, 0, 0, 732, 845)
 }
 point_count = 2
 
@@ -70,21 +70,23 @@ script = ExtResource("1_2smq6")
 [node name="TileMap" parent="." instance=ExtResource("1_5811h")]
 
 [node name="ninjaFrog" parent="." instance=ExtResource("2_wt1wv")]
-position = Vector2(3, 383)
+position = Vector2(67, 867)
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("3_bkadt")]
 
 [node name="Path2D" type="Path2D" parent="."]
+position = Vector2(0, 613.464)
+scale = Vector2(1, 0.274008)
 curve = SubResource("Curve2D_wuvam")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2(742, 64)
+position = Vector2(700, 9.25708)
 rotation = 1.56086
 rotates = false
 loop = false
 
 [node name="AnimatableBody2D" parent="Path2D/PathFollow2D" instance=ExtResource("4_hpyfi")]
-position = Vector2(0.980103, 2.00984)
+position = Vector2(556.873, 15.5339)
 rotation = -1.56086
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Path2D/PathFollow2D"]
@@ -95,38 +97,38 @@ autoplay = "RESET"
 speed_scale = -1.5
 
 [node name="sierra" parent="." instance=ExtResource("5_26mpo")]
-position = Vector2(702, 415)
+position = Vector2(749, 963)
 
 [node name="tampoline" parent="." instance=ExtResource("6_megd5")]
-position = Vector2(1234, 392)
+position = Vector2(1232, 964)
 
 [node name="SpikeBall" parent="." instance=ExtResource("7_fi620")]
-position = Vector2(1740, 289)
+position = Vector2(2003, 897)
 
 [node name="SpikeBall2" parent="." instance=ExtResource("7_fi620")]
-position = Vector2(1969, 289)
+position = Vector2(2198, 902)
 
 [node name="SpikeBall3" parent="." instance=ExtResource("7_fi620")]
-position = Vector2(2192, 276)
+position = Vector2(2416, 896)
 
 [node name="SpikeBall4" parent="." instance=ExtResource("7_fi620")]
-position = Vector2(2384, 285)
+position = Vector2(2642, 891)
 
 [node name="fruit" parent="." instance=ExtResource("8_q41c8")]
-position = Vector2(1521, 304)
+position = Vector2(1721, 906)
 fruitType = "banana"
 
 [node name="fruit2" parent="." instance=ExtResource("8_q41c8")]
-position = Vector2(1562, 298)
+position = Vector2(1762, 900)
 
 [node name="fruit3" parent="." instance=ExtResource("8_q41c8")]
-position = Vector2(1536, 269)
+position = Vector2(1736, 871)
 
 [node name="Node2D" parent="." instance=ExtResource("10_xusgr")]
-position = Vector2(2760, 393)
+position = Vector2(2886, 963)
 
 [node name="Node2D2" parent="." instance=ExtResource("10_xusgr")]
-position = Vector2(2677, 219)
+position = Vector2(2783, 776)
 
 [node name="audio_fondo" type="AudioStreamPlayer" parent="."]
 process_mode = 3
@@ -146,7 +148,7 @@ rotation = -0.00527237
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="colisionSuelo"]
-position = Vector2(1951.48, -2.4126)
+position = Vector2(1956.29, 518.321)
 rotation = -3.1354
 shape = SubResource("RectangleShape2D_cq1di")
 

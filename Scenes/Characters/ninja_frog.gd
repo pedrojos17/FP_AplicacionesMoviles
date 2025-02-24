@@ -27,9 +27,6 @@ func _ready():
 
 	if colision_suelo:
 		colision_suelo.connect("body_entered", Callable(self, "_on_colisionSuelo_body_entered"))
-		print("✅ colisionSuelo detectado correctamente.")
-	else:
-		print("❌ Error: colisionSuelo no encontrado.")
 
 func _physics_process(delta: float) -> void:
 	if is_on_floor():
@@ -37,9 +34,8 @@ func _physics_process(delta: float) -> void:
 		had_jump = false
 		count_jumps = 0
 
-	# 🔥 Verifica si el personaje está tocando el colisionSuelo y muere automáticamente
+	# Verifica si el personaje está tocando el colisionSuelo y muere automáticamente
 	if colision_suelo and self.get_collision_mask_value(colision_suelo.collision_layer):
-		print("💀 El jugador tocó el suelo y murió.")
 		health = 0
 		muerte()
 		return
@@ -143,7 +139,6 @@ func _on_salto_timer_timeout() -> void:
 
 func _on_damage_detection_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
 	if area.name == "colisionSuelo":
-		print("💀 El jugador tocó el suelo y murió instantáneamente.")
 		health = 0
 		muerte()
 	else:
@@ -169,7 +164,6 @@ func muerte():
 
 func _on_colisionSuelo_body_entered(body):
 	if body == self:
-		print("💀 El jugador tocó el suelo y murió inmediatamente.")
 		health = 0
 		muerte()
 
@@ -180,6 +174,3 @@ func ejecutar_muerte():
 	var canvas_layer = get_tree().current_scene.get_node_or_null("dieInfo")
 	if canvas_layer:
 		canvas_layer.visible = true
-		print("☠️ Menú de muerte activado.")
-	else:
-		print("⚠️ No se encontró la capa de muerte.")

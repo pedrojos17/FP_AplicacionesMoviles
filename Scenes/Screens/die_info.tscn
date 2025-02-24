@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://cq3cnrvsmcvso"]
+[gd_scene load_steps=4 format=3 uid="uid://cq3cnrvsmcvso"]
 
 [ext_resource type="Script" path="res://Scenes/Screens/die_info.gd" id="1_ww4gi"]
+[ext_resource type="Texture2D" uid="uid://jslwewi88elq" path="res://Scenes/Screens/3.png" id="2_n1m4h"]
+[ext_resource type="Texture2D" uid="uid://dmsi1v4jqd4rf" path="res://Scenes/Screens/2.png" id="3_01vbg"]
 
 [node name="dieInfo" type="CanvasLayer"]
 script = ExtResource("1_ww4gi")
@@ -8,37 +10,32 @@ script = ExtResource("1_ww4gi")
 [node name="MenuPopUp" type="Node2D" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="MenuPopUp"]
-offset_left = 315.0
-offset_top = 136.0
-offset_right = 809.0
-offset_bottom = 436.0
+offset_left = 700.0
+offset_top = 350.0
+offset_right = 1194.0
+offset_bottom = 650.0
 rotation = 0.000155003
 color = Color(1, 1, 1, 0.768627)
 
-[node name="Label" type="Label" parent="MenuPopUp"]
-offset_left = 380.0
-offset_top = 148.0
-offset_right = 724.0
-offset_bottom = 208.0
+[node name="Label" type="Label" parent="MenuPopUp/ColorRect"]
+layout_mode = 0
+offset_left = 65.0019
+offset_top = 11.9899
+offset_right = 434.002
+offset_bottom = 80.9899
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 50
 text = "NINJAFROG DIE"
 
-[node name="exit" type="Button" parent="MenuPopUp"]
-offset_left = 410.0
-offset_top = 350.0
-offset_right = 710.0
-offset_bottom = 400.0
-theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
-text = "EXIT"
+[node name="Exit" type="TouchScreenButton" parent="MenuPopUp/ColorRect"]
+position = Vector2(73.7316, 202.636)
+scale = Vector2(1.30963, 1.14234)
+texture_normal = ExtResource("2_n1m4h")
 
-[node name="restart" type="Button" parent="MenuPopUp"]
-offset_left = 410.0
-offset_top = 250.0
-offset_right = 710.0
-offset_bottom = 300.0
-rotation = 0.00482717
-text = "RESTART"
+[node name="Restart" type="TouchScreenButton" parent="MenuPopUp/ColorRect"]
+position = Vector2(74.837, 108.992)
+scale = Vector2(1.27482, 1.09302)
+texture_normal = ExtResource("3_01vbg")
 
-[connection signal="pressed" from="MenuPopUp/exit" to="." method="_on_exit_pressed"]
-[connection signal="pressed" from="MenuPopUp/restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="MenuPopUp/ColorRect/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="MenuPopUp/ColorRect/Restart" to="." method="_on_restart_pressed"]

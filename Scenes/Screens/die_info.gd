@@ -34,3 +34,7 @@ func _on_exit_pressed() -> void:
 	get_tree().paused = false  # Despausar antes de salir
 	await get_tree().create_timer(0.1).timeout  # Pequeño retraso para evitar problemas
 	get_tree().change_scene_to_file("res://Scenes/Screens/menu_info.tscn")
+
+
+func _on_touch_screen_button_pressed() -> void:
+	pass # Replace with function body.

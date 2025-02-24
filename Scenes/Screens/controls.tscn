@@ -10,26 +10,26 @@
 script = ExtResource("1_3gsvo")
 
 [node name="left" type="TouchScreenButton" parent="."]
-position = Vector2(37, 507)
-scale = Vector2(1.375, 1.2625)
+position = Vector2(53, 859)
+scale = Vector2(2.375, 2.1125)
 texture_normal = ExtResource("1_23fgv")
 action = "ui_left"
 
 [node name="right" type="TouchScreenButton" parent="."]
-position = Vector2(181, 510)
-scale = Vector2(1.4, 1.2375)
+position = Vector2(265, 862)
+scale = Vector2(2.5, 2.075)
 texture_normal = ExtResource("2_6tmp4")
 action = "ui_right"
 
 [node name="up" type="TouchScreenButton" parent="."]
-position = Vector2(877, 500)
-scale = Vector2(1.2375, 1.1625)
+position = Vector2(1379, 852)
+scale = Vector2(2.6, 1.925)
 texture_normal = ExtResource("3_tyka7")
 action = "ui_accept"
 
 [node name="attack" type="TouchScreenButton" parent="."]
-position = Vector2(986, 408)
-scale = Vector2(1.3125, 1.2375)
+position = Vector2(1602, 712)
+scale = Vector2(2.35, 1.875)
 texture_normal = ExtResource("4_vgksy")
 action = "shuriken"
 
